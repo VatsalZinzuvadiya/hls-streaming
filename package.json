@@ -1,12 +1,50 @@
 {
   "name": "hls-streaming",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "backend for gleemeet",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test",
+    "lint-fix": "eslint --fix .",
+    "lint-detect": "npx eslint .",
+    "start": "nodemon server/server",
+    "start:admin": "nodemon server/admin-server",
+    "dbs": "docker compose up",
+    "start:prod": "node server/server",
+    "loadBigPlace": "docker build -t bigplaces-image -f BigPlaces.Dockerfile . && docker run --name bigplaces-container -d bigplaces-image"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "_moduleAliases": {
+    "logger": "server/utils/logger"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "nodemon": "^3.1.3",
+    "pre-commit": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://psailleela@bitbucket.org/gleemeet-tech/gleemeet-backend.git"
+  },
+  "author": "gleemeet",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://bitbucket.org/gleemeet-tech/gleemeet-backend/issues"
+  },
+  "homepage": "https://bitbucket.org/gleemeet-tech/gleemeet-backend#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1642.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-http-context": "^1.2.4",
+    "express-rate-limit": "^7.3.1",
+    "logger": "^0.0.1",
+    "rate-limit-redis": "^4.2.0",
+    "redis": "^4.6.14",
+    "uuid": "^10.0.0"
+  }
 }
